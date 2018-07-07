@@ -1,5 +1,36 @@
-body {
-  margin: 0;
+html,body{
   padding: 0;
-  font-family: sans-serif;
+  margin: 0;
 }
+.icon {
+  width: 50px;
+  height: 50px;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+.userPhoto {
+display: flex;
+flex-direction: row;
+align-items: center;
+font-size: 16px;
+}
+.navBar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.tabBar{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.tabBar svg {
+  width: 30px;
+  height: 30px;
+}
+
+.main{
+  padding: 45px 4px;
+}
+
