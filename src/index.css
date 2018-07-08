@@ -34,3 +34,37 @@ font-size: 16px;
   padding: 45px 4px;
 }
 
+
+.chat{
+  position: relative;
+}
+.chat .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: #fff;
+  border-top: 1px solid saddlebrown;
+}
+.chat .header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+.chat .msgList {
+  padding-bottom: 45px;
+}
+.chat .msgList .am-list-item {
+  padding-left: 0;
+}
+.chat .msgList .am-list-line {
+  padding-right: 0;
+  display: inline-block;
+}
+.chatMe .am-list-content {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+}

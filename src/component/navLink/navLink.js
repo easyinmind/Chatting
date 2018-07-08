@@ -1,8 +1,14 @@
 import React,{Component} from 'react'
 import {TabBar} from 'antd-mobile'
 import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
+
 
 @withRouter
+@connect(
+  state=>state.chat,
+  {}
+)
 export default class NavLink extends Component{
 
   render(){
@@ -13,6 +19,9 @@ export default class NavLink extends Component{
         <TabBar>
           {list.map(v=>(
             <TabBar.Item
+              badge = {
+                v.path === '/chatlist' ? this.props.unRead : 0
+              }
               icon={<svg className="icon" aria-hidden="true"><use xlinkHref={v.icon}></use></svg>}
               selectedIcon={<svg className="icon" aria-hidden="true"><use xlinkHref={v.iconActive}></use></svg>}
               title= {v.text}

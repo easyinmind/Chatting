@@ -10,6 +10,7 @@ import Register from './container/register/register'
 import AuthRouter from './component/authRouter/aurhRouter'
 import UserInfo from './container/userInfo/userInfo'
 import Main from './container/main/main'
+import Chat from './container/chat/chat'
 import './config'
 import './index.css'
 const store = createStore(reducers,compose(
@@ -28,7 +29,10 @@ ReactDOM.render(
             <Route path='/login' component={Login}/>
             <Route path='/register' component={Register}/>
             <Route path='/userInfo' component={UserInfo}/>
+            <Route path='/chat/:userId' component={Chat}/>
+            
             <Route component={Main}/>
+
           </Switch>
 
           
