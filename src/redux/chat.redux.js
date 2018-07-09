@@ -22,7 +22,7 @@ export function chat(state=initState,action){
     const count = action.payload.userId == action.payload.msg.to ? 1 : 0
     console.log(action.payload)
     return { ...state,
-      chatMsg: [...state.chatMsg, action.payload],
+      chatMsg: [...state.chatMsg, action.payload.msg],
       unRead:state.unRead + count
     }
     // case MSG_READ:
@@ -41,6 +41,7 @@ function msgRece(msg, userId) {
 export function receMsg(){
   return (dispatch,getState) => {
     socket.on('receMsg',function(data){
+      console.log(data)
       const userId = getState().user._id
       dispatch(msgRece(data,userId))
     })

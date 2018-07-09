@@ -3,6 +3,7 @@ import {getPath} from '../utils'
 const ERROR_MSG = 'ERROR_MSG'
 const SAVE_INFO = 'SAVE_INFO'
 const LOAD_INFO = 'LOAD_INFO'
+const LOGOUT = 'LOGOUT'
 const initState = {
   redirectTo:'',
   user:'',
@@ -17,6 +18,8 @@ export function user(state=initState,action){
       return {...state,isAuth:false,msg:action.msg} 
     case LOAD_INFO:
       return {...state,...action.payload}
+    case LOGOUT:
+    return {...initState,redirectTo:'/login'}
     default:
       return state
   }
@@ -29,6 +32,9 @@ function saveInfoSuccess(data){
 }
 export function loadInfo(info) {
   return {payload:info,type:LOAD_INFO}
+}
+export function logout(info) {
+  return {type:LOGOUT}
 }
 export function register(user,pwd,repeatpwd){
   if(!user || !pwd){

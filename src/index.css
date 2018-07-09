@@ -56,6 +56,22 @@ font-size: 16px;
 .chat .msgList {
   padding-bottom: 45px;
 }
+.chat .am-list-content {
+  display: inline-block !important;
+  flex: none !important;
+  width: auto;
+  max-width: 60% !important;
+  border-radius: 5px;
+  min-height: 30px;
+  padding: 5px 10px;
+  min-width: 30px;
+  margin: 10px 0;
+  background-color: saddlebrown;
+  white-space:pre-wrap !important;
+}
+.chat .am-list-body::after {
+  display: none !important;
+}
 .chat .msgList .am-list-item {
   padding-left: 0;
 }
@@ -63,8 +79,18 @@ font-size: 16px;
   padding-right: 0;
   display: inline-block;
 }
-.chatMe .am-list-content {
-  display: flex;
+.chatMe .am-list-line {
+  display: flex !important;
+  flex-direction: row;
   justify-content: flex-end;
-  text-align: right;
+  align-items: flex-start !important;
+}
+.chatMe .am-list-line .am-list-extra {
+  flex-basis:15%;
+}
+.chatMe .am-list-content {
+  background-color: #00FF00;
+}
+.chat  .am-list-item {
+  align-items: flex-start !important;
 }

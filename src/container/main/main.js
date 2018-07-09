@@ -14,7 +14,7 @@ import {getChatList,sendMsg,receMsg} from '../../redux/chat.redux'
 )
 
 export default class Main extends Component{
-  componentWillMount() {
+  componentDidMount() {
     if(!this.props.chat.chatMsg.length){
     this.props.getChatList()
     this.props.receMsg()
@@ -48,7 +48,7 @@ export default class Main extends Component{
         component:Mine
       }
     ]
-    const pathname = this.props.location.pathname
+    const pathname = this.props.location.pathname 
     return(
       <div>
         <div className="navBar">
