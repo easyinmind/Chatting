@@ -7,7 +7,7 @@ import { List } from 'antd-mobile'
 const Item = List.Item
 const Brief = Item.Brief
 @connect(
-  state=>state.userList,
+  state=>state,
   {axiosUserList}
 )
 export default class UserList extends Component{
@@ -18,16 +18,17 @@ export default class UserList extends Component{
     }
   }
   componentDidMount(){
-    if(!this.props.list.length){
+    if (!this.props.userList.list.length) {
       this.props.axiosUserList()
     }
   }
 
 
   render(){
-    const list = this.props.list.filter(v=>{
+    const list = this.props.userList.list.filter(v => {
       return v.photo
     })
+    const userId = this.props.user._id
     return(
       <div>
         <List>
@@ -40,7 +41,9 @@ export default class UserList extends Component{
               this.props.history.push(`/chat/${v._id}`)
             }}
           >
-            {v.name || '暂无昵称'} 
+            {
+             v.name ? (userId == v._id ? `${v.name}(自己)` : v.name) : '暂无昵称'
+            }
             <Brief>心情：{v.mood}</Brief>
           </Item>
           ))}

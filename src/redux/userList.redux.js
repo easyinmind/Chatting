@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 const GET_USERLIST = 'GET_USERLIST'
+const LOGOUT = 'LOGOUT'
 const initState = {
   list:[]
 }
@@ -8,6 +9,8 @@ export function userList(state = initState,action) {
   switch (action.type) {
     case GET_USERLIST:
       return {...state,list:action.payload}
+    case LOGOUT:
+      return initState
     default:
       return state
   }

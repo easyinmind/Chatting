@@ -38,10 +38,12 @@ export default class Login extends Component{
     this.props.register(user,pwd,repeatpwd)
   }
   render(){
-
+    const pathname = this.props.location.pathname
+    const redirectTo = this.props.redirectTo
+    const to = redirectTo && redirectTo != pathname && redirectTo != '/login'
     return(
       <div>
-        {this.props.redirectTo ? <Redirect to={this.props.redirectTo} /> : null}
+        {to ? <Redirect to={this.props.redirectTo} /> : null}
         <Logo></Logo>
         <WingBlank>
           {this.props.msg}

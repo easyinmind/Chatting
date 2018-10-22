@@ -8,6 +8,8 @@ const _filter = {pwd:0,__v:0}
 // Chat.remove({},function(e,d){
 
 // })
+// User.remove({}, function (err, doc) {
+// })
 
 Router.get('/chatlist',function(req,res){
     const userId = req.cookies.userId
@@ -101,6 +103,21 @@ Router.post('/saveInfo', function (req, res) {
         },body)
         return res.json({code:0,data})
     })
+})
+Router.post('/readmsg', function (req, res) {
+    const userId = req.cookies.userId
+    const {from} = req.body
+    Chat.update(
+        {from,to:userId},
+        {'$set':{read:true}},
+        {'multi':true},function(err,doc){
+            console.log(doc)
+            if(!err){
+                return res.json({code:0,num:doc.nModified})
+            }
+            return res.json({code:1})
+        })
+
 })
 function getMd5(data){
     const salt = '9yt543jnbkjdv89==32-<?><_)#@#@#_)@#<IHWDSOIKF'

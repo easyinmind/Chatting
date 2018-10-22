@@ -48,11 +48,21 @@ export default class Main extends Component{
         component:Mine
       }
     ]
-    const pathname = this.props.location.pathname 
+    const pathname = this.props.location.pathname
+    const viewtitle = navList.find(v => (v.path == pathname))
     return(
       <div>
         <div className="navBar">
-          <NavBar>{navList.find(v=>(v.path==pathname)).title}</NavBar>
+          <NavBar
+            rightContent={<div className='rightNav'>
+              <span> 
+                {
+                  this.props.user.name ?this.props.user.name.substr(this.props.user.name.length - 1, 1) : ''
+                }
+              </span>
+              {/* <svg className="icon" aria-hidden="true"><use xlinkHref={`#icon-${this.props.user.photo}`}></use></svg> */}
+            </div> }
+          >{viewtitle && viewtitle.title}</NavBar>
         </div>
         
         <div className="main">

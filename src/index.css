@@ -91,6 +91,18 @@ font-size: 16px;
 .chatMe .am-list-content {
   background-color: #00FF00;
 }
-.chat  .am-list-item {
+.chat .am-list-item {
   align-items: flex-start !important;
+}
+.chatList .am-list-extra {
+  padding-bottom: 13px !important;
+}
+.rightNav>span{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: darkkhaki;
 }

@@ -27,6 +27,7 @@ export default class Login extends Component{
   }
 
   goRegister() {
+    console.log('zhuce')
     this.props.history.push('/register')
   }
   changeInput(v,type){
@@ -38,10 +39,12 @@ export default class Login extends Component{
     this.props.login(this.state.user,this.state.pwd)
   }
   render(){
-
+    const pathname = this.props.location.pathname
+    const redirectTo = this.props.redirectTo
+    const to = redirectTo && redirectTo != pathname && redirectTo != '/register'
     return(
       <div>
-        {this.props.redirectTo ? <Redirect to={this.props.redirectTo} /> : null}
+        { to ? <Redirect to={this.props.redirectTo} /> : null}
         <Logo></Logo>
         <WingBlank>
           {this.props.msg}

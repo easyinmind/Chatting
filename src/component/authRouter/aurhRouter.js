@@ -15,10 +15,10 @@ export default class AuthRouter extends Component{
       return null
     }
     axios.get('/user/info').then(res=>{
-      console.log(res.data)
+      // console.log(res.data)
       if(res.data.code == 0){
         this.props.loadInfo(res.data.data)
-        console.log(this.props)
+        // console.log(this.props)
       }else{
         this.props.history.push('/login')
       }

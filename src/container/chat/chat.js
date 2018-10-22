@@ -1,13 +1,13 @@
 import React,{Component} from 'react'
 import { connect } from 'react-redux'
 import {InputItem,NavBar,List,Icon,Grid} from 'antd-mobile'
-import {getChatList,sendMsg,receMsg} from '../../redux/chat.redux'
+import {getChatList,sendMsg,receMsg,readMsg} from '../../redux/chat.redux'
 import {getChatId} from '../../utils'
 // import io from 'socket.io-client'
 // const socket = io('ws://localhost:9090')
 @connect(
   state => state, 
-  {getChatList,sendMsg,receMsg}
+  {getChatList,sendMsg,receMsg,readMsg}
 )
 export default class Chat extends Component{
   constructor(props){
@@ -25,10 +25,14 @@ export default class Chat extends Component{
       this.props.getChatList()
       this.props.receMsg()
     }
+
   }
+  componentWillUnmount() {
+    const to = this.props.match.params.userId
+    this.props.readMsg(to)
+  }
+  
   handleText(){
-    // socket.emit('sendMsg',{msg:this.state.text})
-    
     const from = this.props.user._id
     const to = this.props.match.params.userId
     const msg = this.state.text
@@ -46,7 +50,7 @@ export default class Chat extends Component{
     const userId = this.props.match.params.userId
     const users = this.props.chat.users
     console.log(userId)
-    if(!users[userId]) {
+    if(!!!users[userId]) {
       return null
     }
     const chatId = getChatId(userId,this.props.user._id)
