@@ -17,8 +17,7 @@ const store = createStore(reducers,compose(
   applyMiddleware(thunk),
   window.devToolsExtension ? window.devToolsExtension() : f=>f
 ))
-
-
+// 渲染
 ReactDOM.render(
   
   ( <Provider store={store}>
